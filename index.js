@@ -41,8 +41,19 @@ async function main() {
                 console.log(`* E: Ignoring route with unknown method ${route.method}`);
         }
     });
+    // Adding handler for undefined routes
+    console.log("* Configuring handler for undefined routes")
+    app.use((req, res) => undefinedRoute(req, res))
     // Listen on `port` for incoming requests
     app.listen(port, () => console.log(`* Started on port ${port}...`));
+}
+
+const undefinedRoute = async (req, res) => {
+    const path = req.path;
+    const method = req.method;
+    const message = `Route ${path} with method ${method} has not being defined`;
+    console.log(`* E: ${message}`)
+    return res.status(404).json({"error": message});
 }
 
 const defineRoute = async (route, req, res) => {

@@ -5,7 +5,8 @@ const _underscore = require("underscore");
  * A route is defined by the following keys
  * 
  * path    --> The API endpoint that needs to be called
- * headers --> If extra headers are needed in the response just add then as a list here
+ * headers --> If extra headers are needed in the response just add them as a list here
+ *             [{name: "HEADER_NAME", value: "HEADER_VALUE"}]
  * body    --> If the endpoint shoud just return a body you can put it in here
  * status  --> The status code of the response
  * method  --> Type of reuqest allowed for the endpoint, values are 'GET', 'POST', 'DELETE', 'UPDATE', 'ALL'
