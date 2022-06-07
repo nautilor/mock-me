@@ -34,6 +34,9 @@ async function main() {
             case "UPDATE":
                 app.update(route.path, route.definition);
                 break;
+            case "OPTIONS":
+                app.options(route.path, route.definition);
+                break;
             case "ALL":
                 app.all(route.path, route.definition);
                 break;
