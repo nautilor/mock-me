@@ -15,12 +15,31 @@ const _underscore = require("underscore");
  */
 
 const routes = [
+    //This route will only accept GET methods
     {
-        path: '/welcome/:name',
+        path: '/v1/welcome/:name',
         body: welcome,
         status: 200,
         method: "GET"
-    }
+    },
+    { // This route will accept every request methods
+        path: '/v2/welcome/:name',
+        body: welcome,
+        status: 200,
+        method: "ALL"
+    },
+    { // This route will accept every request methods and send a 404 with a custom message
+        path: '/v3/welcome/:name',
+        body: {"error": "User not found"},
+        status: 404,
+        method: "ALL"
+    },
+    { // This route will not be registered
+        path: '/v4/welcome/:name',
+        body: welcome,
+        status: 200,
+        method: "UNKNOWN"
+    },
 ]
 
 async function welcome(route, req, res) {
